@@ -1,4 +1,3 @@
-// import NPC from './NPC.js'
 
 const INIT_WIDTH = 20
 
@@ -15,7 +14,6 @@ function CharacterBullet(y, charMidPoint) {
       x: charMidPoint - 10,
       y
     },
-    // background: initBackground,
   }
 
   const init = () => {

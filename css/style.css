@@ -5,8 +5,6 @@
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-    /* background-image: cover;
-  background: rgb(100, 200, 250); */
   background-image: url(../assets/skybackground.jpeg);
   animation: slide linear 30s infinite;
   width: 500px;
@@ -152,7 +150,6 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  /* border: 1px solid black; */
   border-radius: 4px;
   transition-duration: 0.1s;
 }
@@ -197,9 +194,6 @@ button:active {
   background: url(../assets/player.png);
   animation: flash linear 0.5s;
   animation-iteration-count: 3;
-  /* <map name="playerMap">
-  <area shape="rect" coords="108,208,110,210" style="outline:none;"/>
-  </map> */
 }
 
 @keyframes flash {
@@ -231,9 +225,3 @@ button:active {
   background: url(../assets/npcBoss-low.png);
   z-index: 100;
 }
-
-
-/* #score-points {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: white;
-} */

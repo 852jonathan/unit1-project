@@ -13,8 +13,6 @@ function NPC({
   initXVelocity,
   initYVelocity,
   initPos,
-  // initBackground,
-  // movementKeys
 }, $game) {
 
   const npc = {
@@ -25,7 +23,6 @@ function NPC({
     xVelocity: initXVelocity,
     yVelocity: initYVelocity,
     position: initPos,
-    // background: initBackground,
     fireCoolDown: 800,
     lastFired: Date.now() - 800,
     hitByBullet: false,
@@ -50,17 +47,14 @@ function NPC({
       id,
       position: { x, y },
       dimension: { w, h },
-      // background
     } = npc
     npc.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
       .css('top', y)
-      // .css('background', background)
       .css('width', w)
       .css('height', h)
       .css('position', 'absolute')
       .css("background-size", "cover")
-      // .css("transform", "translateX(200px)" + "translateY(50px)")
       .appendTo('#game-screen')
       .addClass(randomNPC)
   }

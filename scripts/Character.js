@@ -4,7 +4,6 @@ function Character({
   initDimension,
   initVelocity,
   initPos,
-  // initBackground,
   movementKeys
 }, $game) {
 
@@ -14,7 +13,6 @@ function Character({
     dimension: initDimension,
     velocity: initVelocity,
     position: initPos,
-    // background: initBackground,
     movementKeys,
     movement: {
       left: false,
@@ -40,7 +38,6 @@ function Character({
         w,
         h
       },
-      // background
     } = character
     character.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
@@ -53,9 +50,6 @@ function Character({
       .css("z-index", "999")
       .appendTo('#game-screen')
       .addClass("player")
-    //   .html(`<map name="playerMap" class="playerInvis">
-    //   <area shape="rect" coords="108,208,110,210" style="display:none"/>
-    // </map> `)
   }
 
   init()

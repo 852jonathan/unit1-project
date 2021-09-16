@@ -12,8 +12,6 @@ function NPCBoss({
   initXVelocity,
   initYVelocity,
   initPos,
-  // initBackground,
-  // movementKeys
 }, $game) {
   const npc = {
     type: 'boss',
@@ -23,7 +21,6 @@ function NPCBoss({
     xVelocity: initXVelocity,
     yVelocity: initYVelocity,
     position: initPos,
-    // background: initBackground,
     fireCoolDown: 500,
     lastFired: Date.now() - 500,
     hitByBullet: false,
@@ -40,7 +37,6 @@ function NPCBoss({
       id,
       position: { x, y },
       dimension: { w, h },
-      // background
     } = npc
 
     npc.$elem = $(`<div id="${id}"></div>`)
