@@ -138,6 +138,19 @@ function Game({
     game.playerBullets.push(bullet)
   }
 
+  // const spawnEnemies = (n) =>{
+
+  //     this.addNPC(npc1Settings)
+  //     game.addNPC(npc2Settings)
+  //     game.addNPC(npc3Settings)
+  // }
+
+  // setInterval(() => {
+  //   spawnEnemies()
+  // }, 2000)
+
+
+
   this.startGame = () => {
     $(document).on('keydown', handleKeyDown)
     $(document).on('keyup', handleKeyUp)

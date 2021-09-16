@@ -2,6 +2,12 @@ import NPCBullet from '/scripts/NPCBullet.js'
 
 const INIT_WIDTH = 20
 
+const randomInt = (min,max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min)
+}
+
 function NPC({
   initDimension,
   initXVelocity,
@@ -23,6 +29,10 @@ function NPC({
     lastFired: Date.now() - 1000,
     hitByBullet: false,
     healthPoints: null,
+    randomVelocityCoolDown: 3000,
+    lastRandomVelocity: Date.now() - 3000,
+    randomCoolDown: 1000,
+    lastRandomCoolDown: Date.now() - 1000
   }
 
   // Create npc and appends the npc to game-screen
@@ -45,33 +55,56 @@ function NPC({
       .appendTo('#game-screen')
       .addClass('npc1')
   }
-
   init()
+
+  const randomPos = () => {
+    npc.position.x = randomInt(-5,495)
+    npc.position.y = randomInt(-100,3)
+    npc.$elem.css('top', npc.position.y).css('left', npc.position.x)
+  }
+  randomPos()
+
+  const updateMovement = () => {
+    const timeNow = Date.now()
+    const {
+      position: { x, y }
+    } = npc
+    let newX = x
+    let newY = y
+
+    const lastRandomCoolDownDiff = timeNow - npc.lastRandomCoolDown
+    if (lastRandomCoolDownDiff > npc.randomCoolDown) {
+      npc.randomVelocityCoolDown = randomInt(1000, 3000)
+      npc.lastRandomCoolDown = timeNow
+    }
+
+    // Randomize X Velocity
+    const lastRandomVelocityDiff = timeNow - npc.lastRandomVelocity
+    if (lastRandomVelocityDiff > npc.randomVelocityCoolDown) {
+      // npc.xVelocity = npc.xVelocity * -1
+      npc.xVelocity = randomInt(-100, 100) / 100
+      npc.lastRandomVelocity = timeNow
+    }
+
+    newX += npc.xVelocity
+    newY += npc.yVelocity
+
+    npc.position.x = newX
+    npc.position.y = newY
+    npc.$elem.css('left', newX).css('top', newY)
+  }
 
   // Everytime this gets invoked, update npc position
   this.moveNPC = (addNPCBullet, character) => {
     const {
-      xVelocity,
-      yVelocity,
-      dimension: { w, h },
+      dimension: { w },
       position: { x, y }
     } = npc
 
     // Check if off screen
     if (0 >= (x + w)) return { tbrNPCOnly: true }
 
-    // Change Position
-    let newX = x
-    let newY = y
-
-    const randomMovement = () => {
-
-      newX += xVelocity
-      newY += yVelocity
-
-    }
-    randomMovement()
-
+    updateMovement()
 
     const timeNow = Date.now()
     const lastFireDiff = timeNow - npc.lastFired
@@ -81,10 +114,6 @@ function NPC({
       addNPCBullet(newBullet)
       npc.lastFired = timeNow
     }
-
-    npc.position.x = newX
-    npc.position.y = newY
-    npc.$elem.css('left', newX).css('top', newY)
 
     // for (let npc of npcs) {
       // checking if player plane collided with npc
@@ -130,8 +159,6 @@ function NPC({
   this.hitByBullet = () => {
     npc.hitByBullet = true
   }
-
-
 
   Object.defineProperties(this, {
     id: {

@@ -79,6 +79,90 @@ const npc3Settings = {
   initBackground: 'url("/assets/npc1.png")',
 }
 
+const npc4Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
+const npc5Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
+const npc6Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
+const npc7Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
+const npc8Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
+const npc9Settings = {
+  initDimension: {
+    w: CHARACTER_WIDTH,
+    h: CHARACTER_WIDTH * 210 / 110
+  },
+  initXVelocity: -0.5,
+  initYVelocity: 0.5,
+  initPos: {
+    x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
+    y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
+  },
+  initBackground: 'url("/assets/npc1.png")',
+}
+
 const npcBossSettings = {
   initDimension: {
     w: BOSS_WIDTH,
@@ -97,15 +181,57 @@ const startButton = () => {
   $(".start-button").one("click",(function(){
     $("#instructions").fadeToggle()
 
+    const timeNow = Date.now()
+    let spawnCoolDown = 3000
+    let lastSpawnCoolDown = Date.now() - 3000
+
     const game = new Game(gameSettings)
     game.addCharacter(p1Settings)
     game.startGame()
+
+
     setTimeout(() => {
       game.addNPC(npc1Settings)
       game.addNPC(npc2Settings)
       game.addNPC(npc3Settings)
       // game.addNPCBoss(npcBossSettings)
-    }, 1500);
+    }, 1500)
+
+
+    for (let n = 3; n >= 0; n--) {
+    //   setTimeout(() => {
+    //     game.addNPC(npc4Settings)
+    //     game.addNPC(npc5Settings)
+    //     game.addNPC(npc6Settings)
+    //     }, 4000)
+
+
+    const spawnCoolDownDiff = timeNow - spawnCoolDown
+    if (spawnCoolDownDiff > lastSpawnCoolDown) {
+      game.addNPC(npc4Settings)
+      game.addNPC(npc5Settings)
+      game.addNPC(npc6Settings)
+      spawnCoolDown = timeNow
+
+    }
+    console.log("cooldown:" + spawnCoolDown)
+    console.log("cooldown diff:" + spawnCoolDownDiff)
+    console.log("lastcooldown:" + lastSpawnCoolDown)
+
+      // setTimeout(() => {
+      //   game.addNPC(npc7Settings)
+      //   game.addNPC(npc8Settings)
+      //   game.addNPC(npc9Settings)
+      // }, 8000)
+
+      // setTimeout(() => {
+      //   game.addNPC(npc1Settings)
+      //   game.addNPC(npc2Settings)
+      //   game.addNPC(npc3Settings)
+      // }, 12000)
+
+      console.log(n)
+    }
 
   }))
 }

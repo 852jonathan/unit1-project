@@ -64,6 +64,9 @@ function NPCBoss({
     let newX = x
     let newY = y
 
+    let lBound = 500
+    let rBound = 500
+
       if (xVelocity < 0) { //if xVelocity is heading to the left....
         if (x + xVelocity < lBound) {
           newX = lBound
@@ -79,17 +82,16 @@ function NPCBoss({
       }
 
     npc.position.x = newX // updates the new X position in the array
-    $elem.css('left', newX) // replaces the left position in CSS
-  })
-}
+    npc.$elem.css('left', newX) // replaces the left position in CSS
 
-    newX = x + xVelocity
-    npc.position.x = newX
-    npc.$elem.css('left', newX)
 
-    newX = x - xVelocity
-    npc.position.x = newX
-    npc.$elem.css('right', newX)
+    // newX = x + xVelocity
+    // npc.position.x = newX
+    // npc.$elem.css('left', newX)
+
+    // newX = x - xVelocity
+    // npc.position.x = newX
+    // npc.$elem.css('right', newX)
 
     // const moveLeft = () => {
     //   newX += xVelocity
