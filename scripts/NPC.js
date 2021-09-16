@@ -1,4 +1,4 @@
-import NPCBullet from 'scripts/NPCBullet.js'
+import NPCBullet from './scripts/NPCBullet.js'
 
 const INIT_WIDTH = 20
 

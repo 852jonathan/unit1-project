@@ -1,8 +1,8 @@
-import Character from 'scripts/Character.js'
-import NPC from 'scripts/NPC.js'
-import NPCBoss from 'scripts/NPCBoss.js'
+import Character from './scripts/Character.js'
+import NPC from './scripts/NPC.js'
+import NPCBoss from './scripts/NPCBoss.js'
 
-// import Powerup1 from 'scripts/Powerup.js'
+// import Powerup1 from './scripts/Powerup.js'
 
 function Game({
   id,
