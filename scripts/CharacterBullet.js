@@ -1,4 +1,4 @@
-// import NPC from '/scripts/NPC.js'
+// import NPC from 'scripts/NPC.js'
 
 const INIT_WIDTH = 20
 

@@ -1,4 +1,4 @@
-import CharacterBullet from '/scripts/CharacterBullet.js'
+import CharacterBullet from 'scripts/CharacterBullet.js'
 
 function Character({
   initDimension,

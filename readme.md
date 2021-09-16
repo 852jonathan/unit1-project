@@ -6,3 +6,5 @@ September 2021
 This is a vertical top down 2D plane shooter using keyboard keys for user interaction.
 You can gain score points by destroying enemy units.
 The objective of the game is to survive and defeat the boss at the end and have the highest score!
+
+An instruction screen will be shown to you on load of the game.

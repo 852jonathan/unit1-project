@@ -1,4 +1,4 @@
-import Game from '/scripts/Game.js'
+import Game from 'scripts/Game.js'
 
 // CONSTANTS
 const GAME_WIDTH = 500
