@@ -7,7 +7,7 @@
   overflow: hidden;
     /* background-image: cover;
   background: rgb(100, 200, 250); */
-  background-image: url(assets/skybackground.jpeg);
+  background-image: url(../assets/skybackground.jpeg);
   animation: slide linear 30s infinite;
   width: 500px;
   height: 600px;
