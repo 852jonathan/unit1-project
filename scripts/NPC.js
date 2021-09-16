@@ -13,7 +13,7 @@ function NPC({
   initXVelocity,
   initYVelocity,
   initPos,
-  initBackground,
+  // initBackground,
   // movementKeys
 }, $game) {
 
@@ -24,16 +24,24 @@ function NPC({
     xVelocity: initXVelocity,
     yVelocity: initYVelocity,
     position: initPos,
-    background: initBackground,
+    // background: initBackground,
     fireCoolDown: 800,
     lastFired: Date.now() - 800,
     hitByBullet: false,
-    healthPoints: null,
+    healthPoints: 2,
     randomVelocityCoolDown: 3000,
     lastRandomVelocity: Date.now() - 3000,
     randomCoolDown: 1000,
     lastRandomCoolDown: Date.now() - 1000
   }
+  let randomNPC = null
+  const randomNPCClass = () => {
+    if (randomInt(0,2) == 1) {
+      randomNPC = 'npc1'
+    } else randomNPC = 'npc2'
+  }
+  randomNPCClass()
+
 
   // Create npc and appends the npc to game-screen
   const init = () => {
@@ -41,7 +49,7 @@ function NPC({
       id,
       position: { x, y },
       dimension: { w, h },
-      background
+      // background
     } = npc
     npc.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
@@ -53,9 +61,11 @@ function NPC({
       .css("background-size", "cover")
       // .css("transform", "translateX(200px)" + "translateY(50px)")
       .appendTo('#game-screen')
-      .addClass('npc1')
+      .addClass(randomNPC)
   }
   init()
+
+
 
   const randomPos = () => {
     npc.position.x = randomInt(220,380)
@@ -102,7 +112,9 @@ function NPC({
     } = npc
 
     // Check if off screen
-    if (0 >= (x + w)) return { tbrNPCOnly: true }
+    // if (0 >= (npc.position.x + npc.dimension.w)) return { tbrNPCOnly: true }
+    if (600 < (npc.position.y - npc.dimension.h)) return { tbrNPCOnly: true }
+
 
     updateMovement()
 
@@ -131,15 +143,28 @@ function NPC({
 
   this.hitCount = (n) => {
     let currentHealth = npc.healthPoints
-    currentHealth = n++
+    currentHealth = n--
 
-      if (currentHealth = 1) this.removeSelf()
+    console.log("currentHealth on hit:" + currentHealth)
+    console.log("npc healthpoints:" + npc.healthPoints)
+
+      if (currentHealth == 0) {
+      // this.removeSelf()
+
+      console.log("hitCount")
+      console.log("currentHealth on death: " + currentHealth)
+      console.log("n :" + n )
+
+    } else {
+      console.log("not dead yet")
+    }
   }
 
   this.removeSelf = () => {
 
     npc.$elem
       .removeClass('npc1')
+      .removeClass('npc2')
       .addClass('explosion')
       .fadeOut("800", () =>  {
         updateScore()

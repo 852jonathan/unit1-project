@@ -4,7 +4,7 @@ function Character({
   initDimension,
   initVelocity,
   initPos,
-  initBackground,
+  // initBackground,
   movementKeys
 }, $game) {
 
@@ -14,7 +14,7 @@ function Character({
     dimension: initDimension,
     velocity: initVelocity,
     position: initPos,
-    background: initBackground,
+    // background: initBackground,
     movementKeys,
     movement: {
       left: false,
@@ -40,7 +40,7 @@ function Character({
         w,
         h
       },
-      background
+      // background
     } = character
     character.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)

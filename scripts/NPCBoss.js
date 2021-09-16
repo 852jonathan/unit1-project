@@ -12,7 +12,7 @@ function NPCBoss({
   initXVelocity,
   initYVelocity,
   initPos,
-  initBackground,
+  // initBackground,
   // movementKeys
 }, $game) {
   const npc = {
@@ -22,11 +22,11 @@ function NPCBoss({
     xVelocity: initXVelocity,
     yVelocity: initYVelocity,
     position: initPos,
-    background: initBackground,
+    // background: initBackground,
     fireCoolDown: 500,
     lastFired: Date.now() - 500,
     hitByBullet: false,
-    healthPoints: null,
+    healthPoints: 20,
     randomVelocityCoolDown: 3000,
     lastRandomVelocity: Date.now() - 3000,
     randomCoolDown: 1000,
@@ -39,7 +39,7 @@ function NPCBoss({
       id,
       position: { x, y },
       dimension: { w, h },
-      background
+      // background
     } = npc
 
     npc.$elem = $(`<div id="${id}"></div>`)
@@ -64,6 +64,7 @@ function NPCBoss({
     let newX = x
     let newY = y
 
+    // Randomize X Velocity Cooldown
     const lastRandomCoolDownDiff = timeNow - npc.lastRandomCoolDown
     if (lastRandomCoolDownDiff > npc.randomCoolDown) {
       npc.randomVelocityCoolDown = randomInt(800, 2500)
@@ -109,16 +110,20 @@ function NPCBoss({
     } = npc
 
     // Check if off screen
-    if (0 >= (x + w)) return { tbrNPCOnly: true }
+    // if (0 >= (x + w)) return { tbrNPCOnly: true }
 
     updateMovement()
 
     const timeNow = Date.now()
     const lastFireDiff = timeNow - npc.lastFired
-    if (lastFireDiff > npc.fireCoolDown && npc.position.y >= 0) {
+    if (lastFireDiff > npc.fireCoolDown) {
+    // if (lastFireDiff > npc.fireCoolDown && npc.position.y >= 0) { //only start shooting when appear
+      npc.fireCoolDown = randomInt(200,700) // randomize fire cooldown
       const charMidPoint = x + (w / 2)
-      const newBullet = new NPCBullet((y + npc.dimension.h - 10), charMidPoint, $game) // will need to pass INIT WIDTH when doing power ups as third var of CharBullet
-      addNPCBullet(newBullet)
+      const newBullet1 = new NPCBullet((y + npc.dimension.h - 10), (charMidPoint + 15), $game) // will need to pass INIT WIDTH when doing power ups as third var of CharBullet
+      const newBullet2 = new NPCBullet((y + npc.dimension.h - 10), (charMidPoint - 15), $game) // will need to pass INIT WIDTH when doing power ups as third var of CharBullet
+      addNPCBullet(newBullet1)
+      addNPCBullet(newBullet2)
       npc.lastFired = timeNow
     }
 
@@ -138,12 +143,12 @@ function NPCBoss({
 
   this.hitCount = (n) => {
     let currentHealth = npc.healthPoints
-    currentHealth = n++
+    currentHealth = n--
 
     console.log("currentHealth :" + currentHealth)
     console.log("npc healthpoints:" + npc.healthPoints)
 
-      if (currentHealth == 200) {
+      if (currentHealth == 0) {
       // this.removeSelf()
 
       console.log("hitCount")
@@ -165,6 +170,7 @@ function NPCBoss({
         updateScore()
         updateFinalScore()
         npc.$elem.remove()
+
       })
 
       const updateScore = () => {

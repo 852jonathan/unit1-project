@@ -71,10 +71,7 @@ function CharacterBullet(y, charMidPoint) {
           bullet.position.y + bullet.dimension.h > npc.position.y) {
         console.log("hit by player")
         npc.hitByBullet()
-        npc.hitCount(1)
-        // console.log("character bullet hitcount:" + hitCount())
-
-        // console.log(npc.hitByBullet)
+        npc.hitCount(-1)
         return { tbrPBulletAndNPC: npc }
       }
 

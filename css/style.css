@@ -217,6 +217,11 @@ button:active {
   z-index: 100;
 }
 
+.npc2{
+  background: url(/assets/npc2.png);
+  z-index: 100;
+}
+
 .npcBoss {
   background: url(/assets/npcBoss.png);
   z-index: 100;
