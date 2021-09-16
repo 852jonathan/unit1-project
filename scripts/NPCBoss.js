@@ -64,18 +64,19 @@ function NPCBoss({
     let newX = x
     let newY = y
 
-    // const lastRandomCoolDownDiff = timeNow - npc.lastRandomCoolDown
-    // if (lastRandomCoolDownDiff > npc.randomCoolDown) {
-    //   npc.randomVelocityCoolDown = randomInt(800, 2500)
-    //   npc.lastRandomCoolDown = timeNow
-    // }
+    const lastRandomCoolDownDiff = timeNow - npc.lastRandomCoolDown
+    if (lastRandomCoolDownDiff > npc.randomCoolDown) {
+      npc.randomVelocityCoolDown = randomInt(800, 2500)
+      npc.lastRandomCoolDown = timeNow
+    }
 
     // Randomize X Velocity
-    // const lastRandomVelocityDiff = timeNow - npc.lastRandomVelocity
-    // if (lastRandomVelocityDiff > npc.randomVelocityCoolDown) {
-    //   npc.xVelocity = randomInt(-100, 100) / 100
-    //   npc.lastRandomVelocity = timeNow
-    // }
+    const lastRandomVelocityDiff = timeNow - npc.lastRandomVelocity
+    if (lastRandomVelocityDiff > npc.randomVelocityCoolDown) {
+      npc.xVelocity = randomInt(-100, 100) / 100
+      npc.lastRandomVelocity = timeNow
+    }
+
     if (newY < 0) {
       newY += npc.yVelocity
     } else {
@@ -112,79 +113,14 @@ function NPCBoss({
 
     updateMovement()
 
-    // newX += npc.xVelocity
-    // npc.$elem.css('left', newX).css('top', newY)
-
-    //     // Randomize X Velocity
-    //     const lastRandomVelocityDiff = timeNow - npc.lastRandomVelocity
-    //     if (lastRandomVelocityDiff > npc.randomVelocityCoolDown) {
-    //       // npc.xVelocity = npc.xVelocity * -1
-    //       npc.xVelocity = randomInt(-100, 100) / 100
-    //       npc.lastRandomVelocity = timeNow
-    //     }
-
-    // let lBound = 500
-    // let rBound = 500
-
-    //   if (xVelocity < 0) { //if xVelocity is heading to the left....
-    //     if (x + xVelocity < lBound) {
-    //       newX = lBound
-    //     } else {
-    //       newX = newX + xVelocity //keep moving to the left
-    //     }
-    //   } else { //if xVelocity is heading to the right...
-    //     if (x + w + xVelocity > rBound) {
-    //       newX = rBound - w
-    //     } else {
-    //       newX = newX + xVelocity //keep moving to the left
-    //     }
-    //   }
-
-    // npc.position.x = newX // updates the new X position in the array
-    // npc.$elem.css('left', newX) // replaces the left position in CSS
-
-
-    // newX = x + xVelocity
-    // npc.position.x = newX
-    // npc.$elem.css('left', newX)
-
-    // newX = x - xVelocity
-    // npc.position.x = newX
-    // npc.$elem.css('right', newX)
-
-    // const moveLeft = () => {
-    //   newX += xVelocity
-    //   console.log("left")
-    //   setInterval(() => {
-    //     moveRight()
-    //   }, 500);
-    //   // newY += yVelocity
-    // }
-    // moveLeft()
-
-    // const moveRight = () => {
-    //   newX -= xVelocity
-    //   console.log("right")
-    //   setInterval(() => {
-    //     moveLeft()
-    //   }, 500)
-      // newY += yVelocity
-    // }
-    // moveRight()
-
-
     const timeNow = Date.now()
     const lastFireDiff = timeNow - npc.lastFired
     if (lastFireDiff > npc.fireCoolDown && npc.position.y >= 0) {
       const charMidPoint = x + (w / 2)
-      const newBullet = new NPCBullet(y, charMidPoint, $game) // will need to pass INIT WIDTH when doing power ups as third var of CharBullet
+      const newBullet = new NPCBullet((y + npc.dimension.h - 10), charMidPoint, $game) // will need to pass INIT WIDTH when doing power ups as third var of CharBullet
       addNPCBullet(newBullet)
       npc.lastFired = timeNow
     }
-
-    // npc.position.x = newX
-    // npc.position.y = newY
-    // npc.$elem.css('left', newX).css('top', newY)
 
     // for (let npc of npcs) {
       // checking if player plane collided with npc
