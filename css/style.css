@@ -8,7 +8,7 @@
     /* background-image: cover;
   background: rgb(100, 200, 250); */
   background-image: url(/assets/skybackground.jpeg);
-  animation: slide linear 60s infinite;
+  animation: slide linear 30s infinite;
   width: 500px;
   height: 600px;
 }
@@ -209,7 +209,7 @@ button:active {
 }
 @keyframes slide{
   from {background-position: 0 0;}
-  to {background-position: 0px 400px;}
+  to {background-position: 0px 216px;}
 }
 
 .npc1{

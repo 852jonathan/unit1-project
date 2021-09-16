@@ -5,8 +5,8 @@ const GAME_WIDTH = 500
 const GAME_HEIGHT = 600
 const CHARACTER_WIDTH = 40
 const CHARACTER_HEIGHT = 50
-const BOSS_WIDTH = 200
-const BOSS_HEIGHT = 50
+const BOSS_WIDTH = 120
+const BOSS_HEIGHT = 66.66
 const VELOCITY = 1.7
 const FPS = 120
 const LOOP_INTERVAL = Math.round(1000 / FPS)
@@ -168,11 +168,11 @@ const npcBossSettings = {
     w: BOSS_WIDTH,
     h: BOSS_WIDTH * 140 / 84
   },
-  initXVelocity: -0.5,
+  initXVelocity: 0.5,
   initYVelocity: 0.5,
   initPos: {
     x: (GAME_WIDTH / 2) - (BOSS_WIDTH/ 2),
-    y: GAME_HEIGHT - GAME_HEIGHT - BOSS_HEIGHT - 10
+    y: 0 - BOSS_HEIGHT
   },
   initBackground: 'url("/assets/npcBoss.png")',
 }
@@ -191,14 +191,14 @@ const startButton = () => {
 
 
     setTimeout(() => {
-      game.addNPC(npc1Settings)
-      game.addNPC(npc2Settings)
-      game.addNPC(npc3Settings)
-      // game.addNPCBoss(npcBossSettings)
+      // game.addNPC(npc1Settings)
+      // game.addNPC(npc2Settings)
+      // game.addNPC(npc3Settings)
+      game.addNPCBoss(npcBossSettings)
     }, 1500)
 
 
-    for (let n = 3; n >= 0; n--) {
+    // for (let n = 3; n >= 0; n--) {
     //   setTimeout(() => {
     //     game.addNPC(npc4Settings)
     //     game.addNPC(npc5Settings)
@@ -206,17 +206,17 @@ const startButton = () => {
     //     }, 4000)
 
 
-    const spawnCoolDownDiff = timeNow - spawnCoolDown
-    if (spawnCoolDownDiff > lastSpawnCoolDown) {
-      game.addNPC(npc4Settings)
-      game.addNPC(npc5Settings)
-      game.addNPC(npc6Settings)
-      spawnCoolDown = timeNow
+    // const spawnCoolDownDiff = timeNow - spawnCoolDown
+    // if (spawnCoolDownDiff > lastSpawnCoolDown) {
+    //   game.addNPC(npc4Settings)
+    //   game.addNPC(npc5Settings)
+    //   game.addNPC(npc6Settings)
+    //   spawnCoolDown = timeNow
 
-    }
-    console.log("cooldown:" + spawnCoolDown)
-    console.log("cooldown diff:" + spawnCoolDownDiff)
-    console.log("lastcooldown:" + lastSpawnCoolDown)
+    // }
+    // console.log("cooldown:" + spawnCoolDown)
+    // console.log("cooldown diff:" + spawnCoolDownDiff)
+    // console.log("lastcooldown:" + lastSpawnCoolDown)
 
       // setTimeout(() => {
       //   game.addNPC(npc7Settings)
@@ -230,10 +230,11 @@ const startButton = () => {
       //   game.addNPC(npc3Settings)
       // }, 12000)
 
-      console.log(n)
+      // console.log(n)
     }
 
-  }))
+  // }
+  ))
 }
 
 // const restartButton = () => {

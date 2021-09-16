@@ -25,8 +25,8 @@ function NPC({
     yVelocity: initYVelocity,
     position: initPos,
     background: initBackground,
-    fireCoolDown: 1000,
-    lastFired: Date.now() - 1000,
+    fireCoolDown: 800,
+    lastFired: Date.now() - 800,
     hitByBullet: false,
     healthPoints: null,
     randomVelocityCoolDown: 3000,
@@ -58,8 +58,8 @@ function NPC({
   init()
 
   const randomPos = () => {
-    npc.position.x = randomInt(-5,495)
-    npc.position.y = randomInt(-100,3)
+    npc.position.x = randomInt(220,380)
+    npc.position.y = randomInt(-100,-10)
     npc.$elem.css('top', npc.position.y).css('left', npc.position.x)
   }
   randomPos()
@@ -74,7 +74,7 @@ function NPC({
 
     const lastRandomCoolDownDiff = timeNow - npc.lastRandomCoolDown
     if (lastRandomCoolDownDiff > npc.randomCoolDown) {
-      npc.randomVelocityCoolDown = randomInt(1000, 3000)
+      npc.randomVelocityCoolDown = randomInt(800, 2500)
       npc.lastRandomCoolDown = timeNow
     }
 
