@@ -7,7 +7,7 @@
   overflow: hidden;
     /* background-image: cover;
   background: rgb(100, 200, 250); */
-  background-image: url(/assets/skybackground.jpeg);
+  background-image: url(assets/skybackground.jpeg);
   animation: slide linear 30s infinite;
   width: 500px;
   height: 600px;
@@ -184,17 +184,17 @@ button:active {
 
 }
 .explosion{
-  background: url(/assets/single-explosion.png);
+  background: url(assets/single-explosion.png);
   background-image: cover;
 }
 
 .explosionBoss{
-  background: url(/assets/single-explosion-boss.png);
+  background: url(assets/single-explosion-boss.png);
   background-image: cover;
 }
 
 .player {
-  background: url(/assets/player.png);
+  background: url(assets/player.png);
   animation: flash linear 0.5s;
   animation-iteration-count: 3;
   /* <map name="playerMap">
@@ -213,22 +213,22 @@ button:active {
 }
 
 .npc1{
-  background: url(/assets/npc1.png);
+  background: url(assets/npc1.png);
   z-index: 100;
 }
 
 .npc2{
-  background: url(/assets/npc2.png);
+  background: url(assets/npc2.png);
   z-index: 100;
 }
 
 .npcBoss {
-  background: url(/assets/npcBoss.png);
+  background: url(assets/npcBoss.png);
   z-index: 100;
 }
 
 .npcBoss-low {
-  background: url(/assets/npcBoss-low.png);
+  background: url(assets/npcBoss-low.png);
   z-index: 100;
 }
 

@@ -33,7 +33,7 @@ function NPCBullet(y, charMidPoint, $game) {
     bullet.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
       .css('top', y)
-      .css('background', 'url("/assets/npcProjectile.png")')
+      .css('background', 'url("assets/npcProjectile.png")')
       .css('width', w)
       .css('height', h)
       .css('position', 'absolute')

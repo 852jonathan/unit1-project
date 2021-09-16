@@ -1,4 +1,4 @@
-// import NPC from './scripts/NPC.js'
+// import NPC from './NPC.js'
 
 const INIT_WIDTH = 20
 
@@ -36,7 +36,7 @@ function CharacterBullet(y, charMidPoint) {
     bullet.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
       .css('top', y)
-      .css('background', 'url("/assets/playerProjectile.png")')
+      .css('background', 'url("assets/playerProjectile.png")')
       .css('width', w)
       .css('height', h)
       .css('position', 'absolute')

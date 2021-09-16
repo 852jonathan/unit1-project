@@ -1,4 +1,4 @@
-import Game from './scripts/Game.js'
+import Game from './Game.js'
 
 // CONSTANTS
 const GAME_WIDTH = 500
@@ -26,7 +26,7 @@ const p1Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2),
     y: GAME_HEIGHT - CHARACTER_HEIGHT - 30
   },
-  // initBackground: 'url("/assets/player.png")',
+  // initBackground: 'url("assets/player.png")',
   movementKeys: {
     left: 65,
     up: 87,
@@ -47,7 +47,7 @@ const npc1Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 200,
     y: GAME_HEIGHT - GAME_HEIGHT
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 
 }
 
@@ -62,7 +62,7 @@ const npc2Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 250,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 5
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 }
 
 const npc3Settings = {
@@ -76,7 +76,7 @@ const npc3Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 }
 
 const npc4Settings = {
@@ -90,7 +90,7 @@ const npc4Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc2.png")',
+  // initBackground: 'url("assets/npc2.png")',
 }
 
 const npc5Settings = {
@@ -104,7 +104,7 @@ const npc5Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc2.png")',
+  // initBackground: 'url("assets/npc2.png")',
 }
 
 const npc6Settings = {
@@ -118,7 +118,7 @@ const npc6Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc2.png")',
+  // initBackground: 'url("assets/npc2.png")',
 }
 
 const npc7Settings = {
@@ -132,7 +132,7 @@ const npc7Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 }
 
 const npc8Settings = {
@@ -146,7 +146,7 @@ const npc8Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 }
 
 const npc9Settings = {
@@ -160,7 +160,7 @@ const npc9Settings = {
     x: (GAME_WIDTH / 2) - (CHARACTER_WIDTH / 2) + 150,
     y: GAME_HEIGHT - GAME_HEIGHT - CHARACTER_HEIGHT - 10
   },
-  // initBackground: 'url("/assets/npc1.png")',
+  // initBackground: 'url("assets/npc1.png")',
 }
 
 const npcBossSettings = {
@@ -174,7 +174,7 @@ const npcBossSettings = {
     x: (GAME_WIDTH / 2) - (BOSS_WIDTH/ 2),
     y: 0 - BOSS_HEIGHT
   },
-  // initBackground: 'url("/assets/npcBoss.png")',
+  // initBackground: 'url("assets/npcBoss.png")',
 }
 
 const startButton = () => {

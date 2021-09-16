@@ -32,7 +32,7 @@ function Powerup1() {
     bullet.$elem = $(`<div id="${id}"></div>`)
       .css('left', x)
       .css('top', y)
-      .css('background', 'url("/assets/money-powerup.png")')
+      .css('background', 'url("assets/money-powerup.png")')
       .css('width', w)
       .css('height', h)
       .css('position', 'absolute')
