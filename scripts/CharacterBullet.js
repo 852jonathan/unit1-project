@@ -69,12 +69,13 @@ function CharacterBullet(y, charMidPoint) {
           bullet.position.x + bullet.dimension.w > npc.position.x &&
           bullet.position.y < npc.position.y + npc.dimension.h &&
           bullet.position.y + bullet.dimension.h > npc.position.y) {
-        console.log("hit by player")
-        npc.hitByBullet()
-        npc.hitCount(-1)
-        return { tbrPBulletAndNPC: npc }
-      }
+        // console.log("hit by player")
+        if (npc.hitByBullet(1)) {
+          return { tbrPBulletAndNPC: npc }
+        }
 
+        return { tbrPBulletOnly: true }
+      }
     }
 
     return {}

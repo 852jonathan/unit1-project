@@ -44,6 +44,10 @@ function Game({
       let index = targetArr.findIndex((target) => tbr.id === target.id)
       if (index >= 0) {
         const [target] = targetArr.splice(index, 1)
+        if(target.type === 'boss') {
+          clearInterval(game.loop)
+          game.loop = null
+        }
         target.removeSelf()
       }
     })
@@ -137,19 +141,6 @@ function Game({
   this.addBullet = (bullet) => {
     game.playerBullets.push(bullet)
   }
-
-  // const spawnEnemies = (n) =>{
-
-  //     this.addNPC(npc1Settings)
-  //     game.addNPC(npc2Settings)
-  //     game.addNPC(npc3Settings)
-  // }
-
-  // setInterval(() => {
-  //   spawnEnemies()
-  // }, 2000)
-
-
 
   this.startGame = () => {
     $(document).on('keydown', handleKeyDown)

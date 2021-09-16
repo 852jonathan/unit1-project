@@ -16,6 +16,7 @@ function NPCBoss({
   // movementKeys
 }, $game) {
   const npc = {
+    type: 'boss',
     $elem: null,
     id: `_${Math.random().toString(36).substring(2, 15)}`,
     dimension: initDimension,
@@ -141,29 +142,11 @@ function NPCBoss({
     return {}
   }
 
-  this.hitCount = (n) => {
-    let currentHealth = npc.healthPoints
-    currentHealth = n--
-
-    console.log("currentHealth :" + currentHealth)
-    console.log("npc healthpoints:" + npc.healthPoints)
-
-      if (currentHealth == 0) {
-      // this.removeSelf()
-
-      console.log("hitCount")
-      console.log("currentHealth after hit: " + currentHealth)
-      console.log("n :" + n )
-
-    } else {
-      console.log("not dead yet")
-    }
-  }
-
   this.removeSelf = () => {
     // const changeToExplosion = () => {
       npc.$elem
       .removeClass('npcBoss')
+      .removeClass('npcBoss-low')
       .addClass('explosionBoss')
       .fadeOut("800", () => {
         npc.$elem.siblings("#you-win").toggle()
@@ -189,8 +172,20 @@ function NPCBoss({
 
   }
 
-  this.hitByBullet = () => {
+  this.hitByBullet = (n) => {
     npc.hitByBullet = true
+    npc.healthPoints -= n
+
+    if (npc.healthPoints <= 0) {
+      return true
+    } else if (npc.healthPoints == 10) {
+      npc.$elem
+      .removeClass('npcBoss')
+      .addClass('npcBoss-low')
+      return false
+    } else
+
+    return false
   }
 
   Object.defineProperties(this, {
@@ -207,6 +202,11 @@ function NPCBoss({
     position: {
       get: function() {
         return { ...npc.position }
+      }
+    },
+    type: {
+      get: function() {
+        return npc.type
       }
     }
   })

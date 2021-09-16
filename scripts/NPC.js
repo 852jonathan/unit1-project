@@ -18,6 +18,7 @@ function NPC({
 }, $game) {
 
   const npc = {
+    type: 'minion',
     $elem: null,
     id: `_${Math.random().toString(36).substring(2, 15)}`,
     dimension: initDimension,
@@ -28,7 +29,7 @@ function NPC({
     fireCoolDown: 800,
     lastFired: Date.now() - 800,
     hitByBullet: false,
-    healthPoints: 2,
+    healthPoints: 1,
     randomVelocityCoolDown: 3000,
     lastRandomVelocity: Date.now() - 3000,
     randomCoolDown: 1000,
@@ -141,27 +142,7 @@ function NPC({
     return {}
   }
 
-  this.hitCount = (n) => {
-    let currentHealth = npc.healthPoints
-    currentHealth = n--
-
-    console.log("currentHealth on hit:" + currentHealth)
-    console.log("npc healthpoints:" + npc.healthPoints)
-
-      if (currentHealth == 0) {
-      // this.removeSelf()
-
-      console.log("hitCount")
-      console.log("currentHealth on death: " + currentHealth)
-      console.log("n :" + n )
-
-    } else {
-      console.log("not dead yet")
-    }
-  }
-
   this.removeSelf = () => {
-
     npc.$elem
       .removeClass('npc1')
       .removeClass('npc2')
@@ -181,8 +162,15 @@ function NPC({
       }
   }
 
-  this.hitByBullet = () => {
+  this.hitByBullet = (n) => {
     npc.hitByBullet = true
+    npc.healthPoints -= n
+
+    if (npc.healthPoints <= 0) {
+      return true
+    }
+
+    return false
   }
 
   Object.defineProperties(this, {
@@ -199,6 +187,11 @@ function NPC({
     position: {
       get: function() {
         return { ...npc.position }
+      }
+    },
+    type: {
+      get: function() {
+        return npc.type
       }
     }
   })

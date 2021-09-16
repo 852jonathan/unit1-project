@@ -178,7 +178,7 @@ const npcBossSettings = {
 }
 
 const startButton = () => {
-  $(".start-button").one("click",(function(){
+  $(".start").one("click",(function(){
     $("#instructions").fadeToggle()
 
     const timeNow = Date.now()
@@ -296,7 +296,7 @@ const startButton = () => {
 // }
 
 const restartButton = () => {
-  $(".restart-button").one("click",(function(){
+  $(".restart").one("click",(function(){
     $("#game-over").fadeToggle()
     location.reload()
   }))

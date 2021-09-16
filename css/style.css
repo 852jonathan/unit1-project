@@ -132,7 +132,7 @@ h1 {
 #you-win {
   display: none;
   position: relative;
-  z-index: 999;
+  z-index: 9999;
 }
 
 #you-win h2  {
@@ -224,6 +224,11 @@ button:active {
 
 .npcBoss {
   background: url(/assets/npcBoss.png);
+  z-index: 100;
+}
+
+.npcBoss-low {
+  background: url(/assets/npcBoss-low.png);
   z-index: 100;
 }
 
